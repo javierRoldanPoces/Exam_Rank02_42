@@ -1,5 +1,70 @@
 #include <unistd.h>
 
+int main(int argc, char **argv)
+{
+	int i;
+	int j;
+
+	if (argc == 3)
+	{
+		i = 0;
+		j = 0;
+		while(argv[1][i])
+			i++;
+		while(argv[2][j])
+		{
+			argv[1][i] = argv[2][j];
+			i++;
+			j++;
+		}
+		argv[1][i]='\0';
+		i = 0;
+		write(1, &argv[1][i], 1);
+		i++;
+		j = 0;
+		while(argv[1][i])
+		{
+			j = i - 1;
+			while( j >= 0 && (argv[1][i] != argv[1][j]))
+				j--;
+			if(j == -1)
+				write(1, &argv[1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*#include <unistd.h>
+
 int check(char c, int pos, char *str)
 {
 	int i;
@@ -45,7 +110,7 @@ int	main(int argc, char **argv)
 }
 
 
-
+*/
 
 
 
